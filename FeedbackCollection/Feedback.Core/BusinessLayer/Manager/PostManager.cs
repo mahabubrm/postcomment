@@ -24,6 +24,8 @@ namespace Feedback.Core.BusinessLayer.Manager
         }
         public ReturnMessage Add(Post entity)
         {
+            entity.PostDate = DateTime.Now;
+            entity.IsActive = true;
             entity.PostBy = (int)sessionUser.UserId;
             _isSaveChange = _postRepository.Add(entity);
             if (_isSaveChange)

@@ -9,5 +9,6 @@ namespace Feedback.Core.DataLayer.Interface
 {
     public interface IUser:IBaseRepository<User>
     {
+        User GetUserByUserName(string userName);
     }
 }

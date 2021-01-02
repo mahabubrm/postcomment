@@ -1,0 +1,151 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>APPS::Login</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/Content/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/Content/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link href="~/Content/plugins/toastr/toastr.min.css" rel="stylesheet" />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Content/dist/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="~/Content/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+
+    <link href="~/Content/plugins/select2/css/select2.min.css" rel="stylesheet" />
+
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="~/Content/plugins/daterangepicker/daterangepicker.css">
+
+    <link href="~/Content/plugins/datatables/dataTables.bootstrap4.css" rel="stylesheet" />
+
+    <link href="~/Content/dist/css/bootstrapValidator.css" rel="stylesheet" />
+
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+
+</head>
+<body class="hold-transition login-page">
+    <div class="login-box">
+        <div class="login-logo">
+            <b>MY APPS</b>
+
+        </div>
+        <!-- /.login-logo -->
+        <div class="card">
+            <div class="card-body login-card-body">
+                <p class="login-box-msg">Sign in to start your session</p>
+
+                <form id="frmLogin" action="@Url.Action("Index","Login")" method="post">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="User Name" name="userName" id="userName">
+                        <div class="input-group-append input-group-text">
+                            <span class="fas fa-user"></span>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" placeholder="Password" name="password" id="password">
+                        <div class="input-group-append input-group-text">
+                            <span class="fas fa-key"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <input type="submit" class="btn btn-primary btn-block btn-flat" value="Sign In" />
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-8">
+                            <a href="#">I forgot my password</a>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                </form>
+
+                <!-- /.social-auth-links -->
+
+                <p class="mb-1">
+
+                </p>
+            </div>
+            <!-- /.login-card-body -->
+        </div>
+    </div>
+    <!-- /.login-box -->
+    <script src="~/Content/plugins/jquery/jquery.min.js"></script>
+    @*<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>*@
+    <!-- jQuery UI 1.11.4 -->
+    <script src="~/Content/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button)
+    </script>
+    <!-- Bootstrap 4 -->
+    <script src="~/Content/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/plugins/select2/js/select2.full.min.js"></script>
+
+    <!-- daterangepicker -->
+    <script src="~/Content/plugins/moment/moment.min.js"></script>
+    <script src="~/Content/plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="~/Content/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <script src="~/Content/plugins/toastr/toastr.min.js"></script>
+
+    <script src="~/Content/custom/js/msg.js"></script>
+    <script src="~/Content/dist/js/bootstrapValidator.js"></script>
+
+    <script src="~/Content/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="~/Content/plugins/datatables/dataTables.bootstrap4.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/Content/dist/js/adminlte.js"></script>
+
+    @section script{
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+                var data =@Html.Raw(Json.Encode(ViewBag.Message));
+                MSG.Toastr.Show(data.MessageType, data.Message, null);
+
+                $('#frmLogin').bootstrapValidator({
+                    message: 'This value is not valid',
+                    feedbackIcons: {
+                        valid: 'glyphicon glyphicon-ok',
+                        invalid: 'glyphicon glyphicon-remove',
+                        validating: 'glyphicon glyphicon-refresh'
+                    },
+                    fields: {
+                        userName: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'required'
+                                }
+                            }
+                        },
+                        password: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'required'
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+
+        </script>
+    }
+</body>
+</html>
+
+
+

@@ -27,5 +27,10 @@ namespace Feedback.Core.DataLayer.Repository
         {
             _db.Dispose();
         }
+
+        public User GetUserByUserName(string userName)
+        {
+            return context.Users.Where(o => o.UserName == userName).FirstOrDefault();
+        }
     }
 }

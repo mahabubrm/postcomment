@@ -79,7 +79,6 @@ E:\Project\Feedback\FeedbackCollection\FeedbackCollection\bin\System.Web.WebPage
 E:\Project\Feedback\FeedbackCollection\FeedbackCollection\bin\Newtonsoft.Json.xml
 E:\Project\Feedback\FeedbackCollection\FeedbackCollection\bin\Antlr3.Runtime.pdb
 E:\Project\Feedback\FeedbackCollection\FeedbackCollection\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\Project\Feedback\FeedbackCollection\FeedbackCollection\obj\Debug\FeedbackCollection.csprojAssemblyReference.cache
 E:\Project\Feedback\FeedbackCollection\FeedbackCollection\obj\Debug\FeedbackCollection.csproj.CoreCompileInputs.cache
 E:\Project\Feedback\FeedbackCollection\FeedbackCollection\obj\Debug\FeedbackCollection.csproj.CopyComplete
 E:\Project\Feedback\FeedbackCollection\FeedbackCollection\obj\Debug\FeedbackCollection.dll
