@@ -1,0 +1,13 @@
+E:\Project\Feedback\FeedbackCollection\Feedback.Core\bin\Debug\Feedback.Core.dll.config
+E:\Project\Feedback\FeedbackCollection\Feedback.Core\bin\Debug\Feedback.Core.dll
+E:\Project\Feedback\FeedbackCollection\Feedback.Core\bin\Debug\Feedback.Core.pdb
+E:\Project\Feedback\FeedbackCollection\Feedback.Core\bin\Debug\EntityFramework.dll
+E:\Project\Feedback\FeedbackCollection\Feedback.Core\bin\Debug\EntityFramework.SqlServer.dll
+E:\Project\Feedback\FeedbackCollection\Feedback.Core\bin\Debug\System.Web.Mvc.dll
+E:\Project\Feedback\FeedbackCollection\Feedback.Core\bin\Debug\EntityFramework.xml
+E:\Project\Feedback\FeedbackCollection\Feedback.Core\bin\Debug\EntityFramework.SqlServer.xml
+E:\Project\Feedback\FeedbackCollection\Feedback.Core\obj\Debug\Feedback.Core.csproj.CoreCompileInputs.cache
+E:\Project\Feedback\FeedbackCollection\Feedback.Core\obj\Debug\Feedback.Core.csproj.CopyComplete
+E:\Project\Feedback\FeedbackCollection\Feedback.Core\obj\Debug\Feedback.Core.dll
+E:\Project\Feedback\FeedbackCollection\Feedback.Core\obj\Debug\Feedback.Core.pdb
+E:\Project\Feedback\FeedbackCollection\Feedback.Core\obj\Debug\Feedback.Core.csprojAssemblyReference.cache
