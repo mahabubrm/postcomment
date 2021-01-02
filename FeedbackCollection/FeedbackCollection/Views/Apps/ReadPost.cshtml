@@ -1,0 +1,207 @@
+﻿@model Feedback.Core.Models.Post
+@{
+    ViewBag.Title = "ReadPost";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Read POST</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Read Post</li>
+                </ol>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark"></h1>
+            </div>
+            <div class="col-sm-6">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.content-header -->
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post" id="frmPost">
+                    <div class="card card-primary card-outline">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                Post
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Post Details</label>
+                                        <input type="text" class="form-control" id="PostDetails" name="PostDetails" value="@Model.PostDetails" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Post Comment</label>
+                                        <input type="text" class="form-control" id="Comments" name="Comments" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <input type="hidden" id="PostId" name="PostId" value="@Model.PostId" />
+                            <input type="button" id="btnSubmit" class="btn btn-success" value="Post" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-primary card-outline">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            Comments
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table id="commentTable" class="table table-bordered table-condensed table-striped">
+                                    
+                                    <tbody>
+
+                                    </tbody>
+                                    
+                                </table>
+                            </div>
+                        </div>                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            var params = new window.URLSearchParams(window.location.search);
+            var postId = params.get('postId');
+            loadPostComment(postId);
+        });
+
+        function loadPostComment(postId) {
+
+            $("#commentTable tbody tr").remove();
+
+            $.ajax({
+                url: '@Url.Action("GetAllComments", "Apps")',
+                type: 'GET',
+                data: { postId: postId },
+                contentType: 'application/json; charset=utf-8',
+                success: function (result) {
+                    for (var i = 0; i < result.length; i++) {
+                        tr = $('<tr/>');
+                        tr.append("<td>" + (parseInt(i) + 1) + "</td>");
+                        tr.append("<td>" + result[i].Date + "</td>");
+                        tr.append("<td><label id='commnt'> " + result[i].Comment + "</label> <input type='hidden' id='CommentId' value='" + result[i].CommentId + "' /></td>");
+
+                        tr.append("<td style='text-align:center;'><button type='button' onclick='commLike(this);' class='btn btn-primary btn-sm'><span class='fa fa-thumbs-up' /> Like</button> <button type='button' onclick='commDisLike(this);' class='btn btn-danger btn-sm'><span class='fa fa-thumbs-down' /> Dislike</button></td>");
+                        $('table tbody').append(tr);
+                    }
+                },
+                error: function () {
+                }
+            });
+        }
+
+        $("#btnSubmit").click(function () {
+            save();
+        });
+
+        var save = function () {
+
+            $.ajax({
+                url: '@Url.Action("CommentPost", "Apps")',
+                type: 'post',
+                data: $('#frmPost').serialize(),
+                success: function (res) {
+                    MSG.Toastr.Show(res.MessageType, res.Message, null);
+                    if (res.MessageType == '1') {
+
+                        $("#Comments").val('');
+
+                        var params = new window.URLSearchParams(window.location.search);
+                        var postId = params.get('postId');
+                        loadPostComment(postId);
+                    }
+                },
+                error: function () {
+                }
+            });
+        };
+
+        function commLike(ctl) {
+
+            var row = $(ctl).parents("tr");
+
+            var likeComnt = {};
+            likeComnt.CommentId = row.find("#CommentId").val();  
+
+            $.ajax({
+                url: '@Url.Action("CommLike", "Apps")',
+                type: 'post',
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify({
+                    model: likeComnt
+                }),
+                success: function (res) {
+                    MSG.Toastr.Show(res.MessageType, res.Message, null);
+                },
+                error: function () {
+                }
+            });
+
+        }
+
+        function commDisLike(ctl) {
+
+            var row = $(ctl).parents("tr");
+
+            var likeComnt = {};
+            likeComnt.CommentId = row.find("#CommentId").val();  
+
+            $.ajax({
+                url: '@Url.Action("CommDisLike", "Apps")',
+                type: 'post',
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify({
+                    model: likeComnt
+                }),
+                success: function (res) {
+                    MSG.Toastr.Show(res.MessageType, res.Message, null);
+                },
+                error: function () {
+                }
+            });
+
+        }
+
+    </script>
+}
+

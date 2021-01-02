@@ -5,15 +5,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="58712b669fed42ea8b4ce70d47fa509e" Name="Diagram1">
-        <EntityTypeShape EntityType="FeedbackCollectionModel.CommentsStatu" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FeedbackCollectionModel.Post" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="FeedbackCollectionModel.PostComment" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="FeedbackCollectionModel.User" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
-        <AssociationConnector Association="FeedbackCollectionModel.FK_CommentsStatus_PostComment" ManuallyRouted="false" />
-        <AssociationConnector Association="FeedbackCollectionModel.FK_CommentsStatus_User" ManuallyRouted="false" />
-        <AssociationConnector Association="FeedbackCollectionModel.FK_Post_User" ManuallyRouted="false" />
-        <AssociationConnector Association="FeedbackCollectionModel.FK_PostComment_Post" ManuallyRouted="false" />
-        <AssociationConnector Association="FeedbackCollectionModel.FK_PostComment_User" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="FeedbackCollectionModel.CommentsStatu" Width="1.5" PointX="3" PointY="2.75" />
+        <EntityTypeShape EntityType="FeedbackCollectionModel.Post" Width="1.5" PointX="3" PointY="5.875" />
+        <EntityTypeShape EntityType="FeedbackCollectionModel.PostComment" Width="1.5" PointX="5.25" PointY="4.25" />
+        <EntityTypeShape EntityType="FeedbackCollectionModel.User" Width="1.5" PointX="0.75" PointY="2.875" />
+        <AssociationConnector Association="FeedbackCollectionModel.FK_CommentsStatus_PostComment" />
+        <AssociationConnector Association="FeedbackCollectionModel.FK_CommentsStatus_User" />
+        <AssociationConnector Association="FeedbackCollectionModel.FK_Post_User" />
+        <AssociationConnector Association="FeedbackCollectionModel.FK_PostComment_Post" />
+        <AssociationConnector Association="FeedbackCollectionModel.FK_PostComment_User" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

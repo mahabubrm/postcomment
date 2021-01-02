@@ -2,6 +2,7 @@
 using Feedback.Core.BusinessLayer.Manager;
 using Feedback.Core.Models;
 using Feedback.Core.Models.Common;
+using Feedback.Core.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,13 +51,67 @@ namespace FeedbackCollection.Controllers
 
         public ActionResult CommentPost()
         {
-            var posts = _postManager.GetAll();
+            var message = new ReturnMessage();
+            if (TempData["Message"] != null)
+            {
+                message = TempData["Message"] as ReturnMessage;
+            }
+            ViewBag.Message = message;
+            var posts = _postManager.GetAll().OrderByDescending(o=>o.PostId).ToList();
             return View(posts);
+        }
+
+        public ActionResult ReadPost(int postId)
+        {
+            var post = _postManager.GetById(postId);
+            return View(post);
+        }
+
+        [HttpPost]
+        public ActionResult CommentPost(PostComment model)
+        {
+            var message = _postCommentManger.Add(model);
+            return Json(message, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetAllComments(int postId)
+        {
+            var postComments = _postCommentManger.GetAll().Where(o => o.PostId == postId).ToList();
+            List<PostCommentViewModel> CommentList = new List<PostCommentViewModel>();
+            if (postComments.Count() > 0)
+            {
+                foreach (var item in postComments)
+                {
+                    PostCommentViewModel model = new PostCommentViewModel();
+                    model.Comment = item.Comments;
+                    model.Date = item.CommentsDate.ToString("dd-MMM-yyyy");
+                    model.CommentId = item.CommentId;
+                    CommentList.Add(model);
+                }
+            }
+            return Json(CommentList.OrderByDescending(o=>o.CommentId), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult CommLike(CommentsStatu model)
+        {
+            model.IsLike = true;
+            model.IsDislike = false;
+            var message = _commentStatusManager.Add(model);
+            return Json(message, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult CommDisLike(CommentsStatu model)
+        {
+            model.IsLike = false;
+            model.IsDislike = true;
+            var message = _commentStatusManager.Add(model);
+            return Json(message, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult ViewPost()
         {
-            return View();
+            var posts = _postManager.GetAll().OrderByDescending(o => o.PostId).ToList();
+            return View(posts);
         }
 
 

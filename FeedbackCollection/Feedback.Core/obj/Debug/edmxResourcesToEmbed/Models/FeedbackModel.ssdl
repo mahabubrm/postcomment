@@ -24,7 +24,7 @@
     <Key>
       <PropertyRef Name="CommentId" />
     </Key>
-    <Property Name="CommentId" Type="int" Nullable="false" />
+    <Property Name="CommentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="PostId" Type="int" Nullable="false" />
     <Property Name="Comments" Type="nvarchar(max)" Nullable="false" />
     <Property Name="CommentsBy" Type="int" Nullable="false" />

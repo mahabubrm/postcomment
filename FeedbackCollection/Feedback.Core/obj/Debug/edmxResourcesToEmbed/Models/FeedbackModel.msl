@@ -4,42 +4,42 @@
     <EntitySetMapping Name="CommentsStatus">
       <EntityTypeMapping TypeName="FeedbackCollectionModel.CommentsStatu">
         <MappingFragment StoreEntitySet="CommentsStatus">
-          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
-          <ScalarProperty Name="CommentId" ColumnName="CommentId" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="IsLike" ColumnName="IsLike" />
           <ScalarProperty Name="IsDislike" ColumnName="IsDislike" />
+          <ScalarProperty Name="IsLike" ColumnName="IsLike" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Posts">
       <EntityTypeMapping TypeName="FeedbackCollectionModel.Post">
         <MappingFragment StoreEntitySet="Post">
-          <ScalarProperty Name="PostId" ColumnName="PostId" />
-          <ScalarProperty Name="PostDetails" ColumnName="PostDetails" />
-          <ScalarProperty Name="PostBy" ColumnName="PostBy" />
-          <ScalarProperty Name="PostDate" ColumnName="PostDate" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="PostDate" ColumnName="PostDate" />
+          <ScalarProperty Name="PostBy" ColumnName="PostBy" />
+          <ScalarProperty Name="PostDetails" ColumnName="PostDetails" />
+          <ScalarProperty Name="PostId" ColumnName="PostId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="PostComments">
       <EntityTypeMapping TypeName="FeedbackCollectionModel.PostComment">
         <MappingFragment StoreEntitySet="PostComment">
-          <ScalarProperty Name="CommentId" ColumnName="CommentId" />
-          <ScalarProperty Name="PostId" ColumnName="PostId" />
-          <ScalarProperty Name="Comments" ColumnName="Comments" />
-          <ScalarProperty Name="CommentsBy" ColumnName="CommentsBy" />
           <ScalarProperty Name="CommentsDate" ColumnName="CommentsDate" />
+          <ScalarProperty Name="CommentsBy" ColumnName="CommentsBy" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="PostId" ColumnName="PostId" />
+          <ScalarProperty Name="CommentId" ColumnName="CommentId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="FeedbackCollectionModel.User">
         <MappingFragment StoreEntitySet="User">
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

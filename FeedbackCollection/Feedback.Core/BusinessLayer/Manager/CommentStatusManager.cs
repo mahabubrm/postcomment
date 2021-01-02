@@ -28,7 +28,7 @@ namespace Feedback.Core.BusinessLayer.Manager
             _isSaveChange = _commentStatusRepository.Add(entity);
             if (_isSaveChange)
             {
-                _returnMessage = ReturnMessage.SetSuccessMessage();
+                _returnMessage = ReturnMessage.SetSuccessMessage("Success");
             }
             else
             {

@@ -1499,6 +1499,8 @@
     <Content Include="Views\Apps\Index.cshtml" />
     <Content Include="Views\Apps\CreatePost.cshtml" />
     <Content Include="Views\Apps\CommentPost.cshtml" />
+    <Content Include="Views\Apps\ReadPost.cshtml" />
+    <Content Include="Views\Apps\ViewPost.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

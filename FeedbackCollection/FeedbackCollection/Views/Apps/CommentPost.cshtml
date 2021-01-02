@@ -1,8 +1,97 @@
-﻿
+﻿@model IEnumerable<Feedback.Core.Models.Post>
 @{
     ViewBag.Title = "CommentPost";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>CommentPost</h2>
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Post(s)</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">all post</li>
+                </ol>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark"></h1>
+            </div>
+            <div class="col-sm-6">
+                
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-primary card-outline">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fas fa-list"></i>
+                            Posts
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <table class="table table-bordered table-striped" id="tblRecords">
+                                <thead class="thead-default">
+                                    <tr>
+                                        <th width="1">#</th>
+                                        <th>Post</th>
+                                        <th>Post Date</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{ int rowNo = 0;}
+                                    @{
+
+                                        foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>@(rowNo += 1)</td>
+                                                <td>@item.PostDetails</td>
+                                                <td>@Convert.ToDateTime(item.PostDate).ToString("dd-MMM-yyyy")</td>
+                                                <td class="text-center">                                                    
+                                                    <a href="@Url.Action("ReadPost", "Apps", new { postId = @item.PostId })" class="btn btn-sm btn-primary">Post Comment</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+
+
+    $(document).ready(function () {
+
+        var data =@Html.Raw(Json.Encode(ViewBag.Message));
+        MSG.Toastr.Show(data.MessageType, data.Message, null);
+
+        $('#tblRecords').dataTable({
+            "order": []
+        });
+        $(".dataTables_wrapper").css("width", "100%");
+
+    });
+
+    </script>
+}
 

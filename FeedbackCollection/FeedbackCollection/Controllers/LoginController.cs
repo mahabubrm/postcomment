@@ -36,7 +36,7 @@ namespace FeedbackCollection.Controllers
             var loginResult = _applicationUser.Login(userName, password);
             if (loginResult.MessageType == MessageTypes.Success)
             {
-                return RedirectToAction("Index", "Apps");
+                return RedirectToAction("ViewPost", "Apps");
             }
             else
             {

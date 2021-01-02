@@ -24,11 +24,12 @@ namespace Feedback.Core.BusinessLayer.Manager
         }
         public ReturnMessage Add(PostComment entity)
         {
+            entity.CommentsDate = DateTime.Now;
             entity.CommentsBy = (int)sessionUser.UserId;
             _isSaveChange = _postCommentRepository.Add(entity);
             if (_isSaveChange)
             {
-                _returnMessage = ReturnMessage.SetSuccessMessage();
+                _returnMessage = ReturnMessage.SetSuccessMessage("Comments Post successfully");
             }
             else
             {

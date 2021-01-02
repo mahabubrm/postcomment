@@ -83,3 +83,4 @@ E:\Project\Feedback\FeedbackCollection\FeedbackCollection\obj\Debug\FeedbackColl
 E:\Project\Feedback\FeedbackCollection\FeedbackCollection\obj\Debug\FeedbackCollection.csproj.CopyComplete
 E:\Project\Feedback\FeedbackCollection\FeedbackCollection\obj\Debug\FeedbackCollection.dll
 E:\Project\Feedback\FeedbackCollection\FeedbackCollection\obj\Debug\FeedbackCollection.pdb
+E:\Project\Feedback\FeedbackCollection\FeedbackCollection\obj\Debug\FeedbackCollection.csprojAssemblyReference.cache
